@@ -2,7 +2,7 @@
 
 Module: `greeting`
 Last updated: 2026-05-27
-Design: [View the approved design](http://localhost:8080/design/368ab16d-a7b8-4230-9647-28411080e6e9)
+Design: [View the approved design](design/index.html)
 Design system: `design/design-system.md`
 
 > One file per module, at `docs/{module}/SRS.md`. It covers only the functions
@@ -27,7 +27,7 @@ There are no other actors. No accounts, no admin, no editing.
 
 **In scope** — the functions specified below, by their plan titles:
 
-- Display greeting from database
+- Display greeting text
 
 **Out of scope** — name what a reader would reasonably expect here and say
 where it lives instead.
@@ -41,7 +41,7 @@ where it lives instead.
 
 ## 4. Functional requirements
 
-### 4.1 Display greeting from database
+### 4.1 Display greeting text
 
 **Requirement GREETING-001 — Serve the greeting text**
 
@@ -59,12 +59,12 @@ Behaviour:
 4. Reloading the page re-reads the current value from the database and shows it.
 
 **Acceptance criteria** — each maps one-to-one onto a test case in
-`docs/greeting/test-cases/display-greeting-from-database.md`.
+`docs/greeting/test-cases/display-greeting-text.md`.
 
 | # | Given | When | Then |
 |---|---|---|---|
 | AC-1 | The database holds one greeting row with text "Hello Word" | A Guest opens the page | The page shows the text "Hello Word" |
-| AC-2 | The page is already open and has rendered the greeting | The Guest reloads the page | The page re-reads the greeting and shows the same "Hello Word" text |
+| AC-2 | The greeting row's text has been changed to a different value since the first load | The Guest reloads the page | The page re-reads from the database and shows the changed value, not the previously rendered text |
 
 **Failure, boundary and permission behaviour**
 
@@ -91,7 +91,7 @@ Behaviour:
 
 | Area | Requirement |
 |---|---|
-| Performance | The greeting renders within 2s of page load on a typical connection |
+| Performance | The greeting renders within 2s of page load on a connection with ≥ 10 Mbps downlink and ≤ 100 ms round-trip latency |
 | Accessibility | The greeting text is plain text with contrast ≥ 4.5:1 (near-black on white) |
 | Responsive | The page works at 320px and up; no horizontal scroll |
 | Localisation | Copy is exactly "Hello Word" as the stakeholder wrote it |
@@ -111,4 +111,4 @@ Behaviour:
 
 | Plan item | Requirement ids | Test cases |
 |---|---|---|
-| Display greeting from database | GREETING-001 | `test-cases/display-greeting-from-database.md` |
+| Display greeting text | GREETING-001 | `test-cases/display-greeting-text.md` |
